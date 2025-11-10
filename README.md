@@ -1,3 +1,4 @@
+```markdown
 # QSOL-IMC: Quantum-Sourced Optimization-Logic Integrated Meme Company  
 *QSOLKCB Labs — The Memetic Nerve Center*
 
@@ -29,6 +30,8 @@ A savage S23 bot that auto-trolls verified spam with quantum-random burns:
 
 TCPA-compliant, locked to Android’s BlockedNumberContract, and ready to entangle fraudsters.
 
+```
+
 wow
 such scam
 very fail
@@ -36,10 +39,10 @@ much roast
 /_/
 ( o.o )
 
-^ <
+> ^ <
 
-yaml
-Copy code
+````
+
 **Doge says:** Your IRS pitch decohered harder than a qubit in a microwave.
 
 ---
@@ -49,106 +52,134 @@ Copy code
 - **LambRoaster** – Home of `lambroast.py`, quantum prankster extraordinaire.
 - **qiskit-qec-wrappers** – Core QEC stack for robust meme generation.
 - **proof-qec-dna-rubiks-audio-reactive-viz** – Audio visualization backbone.
-- **Coming Soon**: QSOL-IMC API for meme-secure VoIP (Twilio + laser entropy).
+- **Coming Soon:** QSOL-IMC API for meme-secure VoIP (Twilio + laser entropy).
 
 ---
 
 ## 🛠 Quick Start (S23/Termux Vibes)
 
-### Clone & Install
+**Clone & Install**
 ```sh
 git clone https://github.com/QSOLKCB/LambRoaster.git
 cd LambRoaster
 pip install -r requirements.txt  # qiskit, numpy, etc.
-Run the Roast
-sh
-Copy code
+````
+
+**Run the Roast**
+
+```sh
 python lambroast.py
 # Mock inbound: +1-555-LAMBSCAM
 # Enter scammer BS: "Your warranty expired!"
 # Output: Quantum burn + Doge ASCII. 🔥
-Test Spam Lock
+```
+
+**Test Spam Lock**
 Only verified numbers get the lamb treatment — manual callbacks, one-shot rule.
 
-Dependencies (requirements.txt)
-qiskit==0.46.0
+---
 
-qiskit-aer==0.15.0
+### Dependencies (`requirements.txt`)
 
-numpy==1.26.4
+* qiskit==0.46.0
+* qiskit-aer==0.15.0
+* numpy==1.26.4
+* *Whisper/Twilio optional for STT/VoIP*
 
-Whisper/Twilio optional for STT/VoIP
-🧰 Python Virtual Environment Setup (Arch Linux)
+---
+
+## 🧰 Python Virtual Environment Setup (Arch Linux)
+
 Arch protects its system Python, so use an isolated environment for installs.
 
-Install Virtualenv
-sh
-Copy code
+**Install Virtualenv**
+
+```sh
 sudo pacman -S python-virtualenv
+```
+
 Expected prompt:
 
-bash
-Copy code
+```
 Packages (3) python-distlib ... python-platformdirs ... python-virtualenv ...
 :: Proceed with installation? [Y/n] Y
+```
+
 Once installed, ConditionNeedsUpdate will arm automatically.
 
-Create a Virtual Environment
-sh
-Copy code
+**Create a Virtual Environment**
+
+```sh
 python -m venv venv
-Activate It
-sh
-Copy code
+```
+
+**Activate It**
+
+```sh
 source venv/bin/activate
+```
+
 You’ll see your prompt change to:
 
-ruby
-Copy code
+```
 (venv) [trent@archlinux QEC]$
-Install Dependencies
-sh
-Copy code
-pip install -r requirements.txt
-Deactivate When Done
-sh
-Copy code
-deactivate
-Summary
+```
 
-sh
-Copy code
+**Install Dependencies**
+
+```sh
+pip install -r requirements.txt
+```
+
+**Deactivate When Done**
+
+```sh
+deactivate
+```
+
+**Summary**
+
+```sh
 sudo pacman -S python-virtualenv
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
+
 This workflow ensures full project isolation and avoids PEP 668: externally-managed-environment errors.
 
-⚖️ Legal & Ethics (Prick with Purpose)
-TCPA-Compliant: Manual callbacks only, verified unsolicited spam via Android APIs + QSOLKCB hashes.
+---
 
-Entertainment Only: Roast responsibly. All burns are humor, not harassment.
+## ⚖️ Legal & Ethics (Prick with Purpose)
 
-Privacy: On-device inference only — no server data slurping.
+* **TCPA-Compliant:** Manual callbacks only, verified unsolicited spam via Android APIs + QSOLKCB hashes.
+* **Entertainment Only:** Roast responsibly. All burns are humor, not harassment.
+* **Privacy:** On-device inference only — no server data slurping.
 
-See full company ethics and guidelines:
-docs/ETHICS.md
-(QSOL-IMC: “Truth Compiled. Resonance Embodied. Coherence Renewed.”)
+> **See full company ethics and guidelines:**
+> [docs/ETHICS.md](docs/ETHICS.md)
+> (QSOL-IMC: “Truth Compiled. Resonance Embodied. Coherence Renewed.”)
 
-🤝 Contribute
-Fork and add your meme burns (e.g. “Pajit script? Yeeted to Wojak town!”).
+---
 
-Report bugs: “Quantum void detected — Doge viz unstable.”
+## 🤝 Contribute
 
-Collab: Email trent@qsol-imc.com
+* Fork and add your meme burns (e.g. “Pajit script? Yeeted to Wojak town!”).
+* Report bugs: “Quantum void detected — Doge viz unstable.”
+* Collab: Email [trent@qsol-imc.com](mailto:trent@qsol-imc.com)
 
-📈 Roadmap
-Q4 2025 – Full S23 app (Kivy build) + Snake Easter Egg 🐍
+---
 
-2026 – Meme NFT marketplace for roast recordings
+## 📈 Roadmap
 
-Beyond – Laser-kernel VoIP for global scammer entanglement
+* **Q4 2025** – Full S23 app (Kivy build) + Snake Easter Egg 🐍
+* **2026** – Meme NFT marketplace for roast recordings
+* **Beyond** – Laser-kernel VoIP for global scammer entanglement
 
-QSOL-IMC: Much wow, such secure, very prank. 😎🔮🐶
+---
+
+**QSOL-IMC:** Much wow, such secure, very prank. 😎🔮🐶
 Powered by Trent Slade & the #fcukscammers collective.
-Last updated: November 11, 2025
+*Last updated: November 11, 2025*
+
+```
