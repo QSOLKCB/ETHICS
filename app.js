@@ -22,13 +22,15 @@
 
   const state = {
     mode: "therapy",
-    speechEnabled: true,
+    speechEnabled: false,
     voices: [],
     interactions: 0,
     startedAt: Date.now(),
     interventionStage: 0,
     grassAcknowledged: false,
-    recognition: null
+    recognition: null,
+    recognitionConsent: false,
+    listening: false
   };
 
   const modeNames = {
@@ -172,12 +174,6 @@
     return items[hash(`${seedText}|${state.mode}|${state.interactions}`) % items.length];
   }
 
-  function escapeText(value) {
-    const node = document.createElement("div");
-    node.textContent = value;
-    return node.textContent;
-  }
-
   function addMessage(speaker, text, kind = "doctor") {
     const row = document.createElement("div");
     row.className = `message ${kind}`;
@@ -187,11 +183,15 @@
     who.textContent = `${speaker}>`;
 
     const paragraph = document.createElement("p");
-    paragraph.textContent = escapeText(text);
+    paragraph.textContent = text;
 
     row.append(who, paragraph);
     ui.transcript.append(row);
     ui.transcript.scrollTop = ui.transcript.scrollHeight;
+  }
+
+  function setStatus(text) {
+    ui.status.textContent = text;
   }
 
   function speak(text) {
@@ -205,11 +205,11 @@
     utterance.pitch = Number(ui.pitch.value);
     utterance.onstart = () => {
       document.body.classList.add("speaking");
-      ui.status.textContent = "LOCAL // SPEAKING";
+      setStatus("VOICE // SPEAKING");
     };
     utterance.onend = utterance.onerror = () => {
       document.body.classList.remove("speaking");
-      ui.status.textContent = "LOCAL // READY";
+      setStatus("TEXT // READY");
     };
     window.speechSynthesis.speak(utterance);
   }
@@ -226,21 +226,14 @@
     if (/\b(hello|hi|hey|g'day|gday)\b/i.test(text)) {
       return "Hello. I am Doctor S.BAITSO. Please state your name, preferred pronouns, and whether the repository currently builds.";
     }
-
-    if (/\b(thank|thanks|cheers)\b/i.test(text)) {
-      return "You are welcome. Gratitude accepted in canonical JSON.";
-    }
-
-    if (/\b(sorry|apologise|apologize)\b/i.test(text)) {
-      return "Do not apologise to me. Apologise to the maintainer who must review the generated diff.";
-    }
+    if (/\b(thank|thanks|cheers)\b/i.test(text)) return "You are welcome. Gratitude accepted in canonical JSON.";
+    if (/\b(sorry|apologise|apologize)\b/i.test(text)) return "Do not apologise to me. Apologise to the maintainer who must review the generated diff.";
 
     for (const [pattern, replies] of rules) {
       if (pattern.test(text)) return choose(replies, text);
     }
 
-    const pool = [...modeReplies[state.mode], ...commonReplies];
-    return choose(pool, text);
+    return choose([...modeReplies[state.mode], ...commonReplies], text);
   }
 
   function diagnosis() {
@@ -286,10 +279,16 @@
   }
 
   function setSpeech(enabled) {
-    state.speechEnabled = enabled;
-    ui.speechToggle.setAttribute("aria-pressed", String(enabled));
-    ui.speechToggle.textContent = `VOICE: ${enabled ? "ON" : "OFF"}`;
-    if (!enabled && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    state.speechEnabled = Boolean(enabled && "speechSynthesis" in window);
+    ui.speechToggle.setAttribute("aria-pressed", String(state.speechEnabled));
+    ui.speechToggle.textContent = `VOICE: ${state.speechEnabled ? "ON" : "OFF"}`;
+    ui.transcript.setAttribute("aria-live", state.speechEnabled ? "off" : "polite");
+
+    if (!state.speechEnabled && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      document.body.classList.remove("speaking");
+      setStatus("TEXT // READY");
+    }
   }
 
   function clearTranscript() {
@@ -297,36 +296,59 @@
   }
 
   function setMode(mode) {
+    if (!Object.hasOwn(modeNames, mode)) return;
     state.mode = mode;
     ui.modeLabel.textContent = modeNames[mode];
+
     $$(".mode-card").forEach((button) => {
-      button.classList.toggle("active", button.dataset.mode === mode);
+      const selected = button.dataset.mode === mode;
+      button.classList.toggle("active", selected);
+      button.setAttribute("aria-pressed", String(selected));
     });
+
     doctorSays(modeIntros[mode]);
     ui.prompt.focus();
   }
 
   function populateVoices() {
     if (!("speechSynthesis" in window)) {
-      ui.voice.innerHTML = "<option>Speech unavailable</option>";
+      ui.voice.replaceChildren(new Option("Speech unavailable", ""));
       ui.voice.disabled = true;
+      ui.speechToggle.disabled = true;
       setSpeech(false);
       return;
     }
 
     state.voices = window.speechSynthesis.getVoices();
     ui.voice.replaceChildren();
+
+    if (state.voices.length === 0) {
+      ui.voice.append(new Option("Loading browser voices…", "0"));
+      return;
+    }
+
     state.voices.forEach((voice, index) => {
-      const option = document.createElement("option");
-      option.value = String(index);
-      option.textContent = `${voice.name} (${voice.lang})`;
-      ui.voice.append(option);
+      ui.voice.append(new Option(`${voice.name} (${voice.lang})`, String(index)));
     });
 
     const preferred = state.voices.findIndex((voice) =>
       /english.*(australia|united kingdom)|daniel|google uk english male/i.test(`${voice.name} ${voice.lang}`)
     );
     ui.voice.value = String(preferred >= 0 ? preferred : 0);
+  }
+
+  function requestRecognitionConsent() {
+    if (state.recognitionConsent) return true;
+
+    const accepted = window.confirm(
+      "MICROPHONE PRIVACY WARNING\n\nSpeech recognition is provided by your browser. Depending on the browser and operating system, recorded audio may be sent to a remote transcription service. QSOL-IMC does not receive or store it.\n\nAvoid sensitive information. Continue?"
+    );
+
+    state.recognitionConsent = accepted;
+    if (!accepted) {
+      addMessage("SYSTEM", "Microphone cancelled. Keyboard protocol remains available.", "system");
+    }
+    return accepted;
   }
 
   function setupRecognition() {
@@ -344,16 +366,19 @@
     recognition.onstart = () => {
       state.listening = true;
       ui.mic.setAttribute("aria-pressed", "true");
-      ui.status.textContent = "LOCAL // LISTENING";
+      setStatus("BROWSER MIC // LISTENING");
     };
     recognition.onend = () => {
       state.listening = false;
       ui.mic.setAttribute("aria-pressed", "false");
-      ui.status.textContent = "LOCAL // READY";
+      setStatus("TEXT // READY");
     };
-    recognition.onerror = () => doctorSays("Microphone input failed. Please communicate using the ancient keyboard protocol.", false);
+    recognition.onerror = (event) => {
+      addMessage("SYSTEM", `Microphone input failed (${event.error || "unknown"}). Use the ancient keyboard protocol.`, "system");
+    };
     recognition.onresult = (event) => {
       ui.prompt.value = event.results[0][0].transcript;
+      addMessage("SYSTEM", "Browser transcription inserted into the prompt. Review it before transmitting.", "system");
       ui.prompt.focus();
     };
     state.recognition = recognition;
@@ -376,7 +401,7 @@
   ui.interrupt.addEventListener("click", () => {
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
     document.body.classList.remove("speaking");
-    ui.status.textContent = "LOCAL // INTERRUPTED";
+    setStatus("TEXT // INTERRUPTED");
   });
   ui.clear.addEventListener("click", () => {
     clearTranscript();
@@ -384,8 +409,11 @@
   });
   ui.mic.addEventListener("click", () => {
     if (!state.recognition) return;
-    if (state.listening) state.recognition.stop();
-    else state.recognition.start();
+    if (state.listening) {
+      state.recognition.stop();
+      return;
+    }
+    if (requestRecognitionConsent()) state.recognition.start();
   });
 
   $$(".mode-card").forEach((button) => {
@@ -396,9 +424,10 @@
   populateVoices();
   if ("speechSynthesis" in window) window.speechSynthesis.onvoiceschanged = populateVoices;
   setupRecognition();
+  setSpeech(false);
 
-  doctorSays("HELLO. I AM DOCTOR S.BAITSO 2026. I am not a doctor, not an AI service, and not connected to a server. Please state your problem in one reproducible sentence.");
-  addMessage("SYSTEM", "All responses are generated locally. No conversation data leaves this page.", "system");
+  doctorSays("HELLO. I AM DOCTOR S.BAITSO 2026. I am not a doctor and not an AI service. Please state your problem in one reproducible sentence.", false);
+  addMessage("SYSTEM", "Typed text and generated replies stay in this page. Browser microphone recognition, if enabled, may use a remote transcription service.", "system");
 
   window.setInterval(checkSessionHealth, 15000);
 
