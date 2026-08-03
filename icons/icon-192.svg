@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192" role="img" aria-label="DR. S.BAITSO terminal icon">
+  <rect width="192" height="192" rx="34" fill="#020604"/>
+  <circle cx="96" cy="96" r="72" fill="#07100d" stroke="#54ff9f" stroke-width="6"/>
+  <path d="M57 76h25M110 76h25" stroke="#54ff9f" stroke-width="10" stroke-linecap="round"/>
+  <path d="M58 118c20 18 56 18 76 0" fill="none" stroke="#f4e76e" stroke-width="9" stroke-linecap="round"/>
+  <path d="M96 31v18M31 96h18M143 96h18M96 143v18" stroke="#6be7ff" stroke-width="5" stroke-linecap="round"/>
+</svg>

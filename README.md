@@ -1,185 +1,115 @@
-```markdown
-# QSOL-IMC: Quantum-Sourced Optimization-Logic Integrated Meme Company  
-*QSOLKCB Labs — The Memetic Nerve Center*
+# QSOL-IMC Ethics
 
-Welcome to QSOLKCB, the stealth GitHub nerve center for QSOL-IMC — where quantum error correction meets meme-fueled anarchy to roast scammers into a superposition of fail.
+**Ethics, attribution, verification, and contributor recognition for QSOL-IMC**  
+**ABN 37 585 906 952**
 
-Born from Trent Slade’s wizardry, we’re engineering the future of secure, hilarious anti-scam tech: Qiskit-powered randomness, laser-precise burns, and multimodal chaos that turns spam calls into viral gold.
+> Truth Compiled. Resonance Embodied. Coherence Renewed.
 
-#fcukscammers
+This repository contains the living ethics framework used across QSOL-IMC research, software, models, datasets, visualisation, sonification, security work, publications, and experimental projects.
 
----
+It also contains **DR. S.BAITSO 2026**, a browser-native talking meme therapist that applies the manifesto to modern AI and software-development absurdity.
 
-## 🚀 Mission: Meme the Void
+## Open the terminal
 
-QSOLKCB isn’t just code — it’s a quantum meme revolution. We fuse:
+After GitHub Pages publishes the default branch:
 
-- **Quantum Security** – Fault-tolerant QEC (NISQ-to-FTQC magic from `qiskit-qec-wrappers`) for unhackable spam hashes.
-- **Optical/Laser Kernel** – Photon-entropy RNG for unpredictable prank roasts (our nod to laser-comms toolkits).
-- **Meme Company Vibes** – Doge-tier taunts, Rickroll loops, and 7-11/Wojak zingers to waste scammer time.
-- **Multimodal Magic** – Audio-reactive trolling inspired by `proof-qec-dna-rubiks-audio-reactive-viz`, turning scammer chatter into waveform-synced roast radio.
+**https://qsolkcb.github.io/ETHICS/**
 
----
+No server, npm installation, model API, account, or cloud inference is required. Open `index.html` directly for the core experience. GitHub Pages or another local HTTP server enables the optional offline service worker.
 
-## Flagship Drop: `lambroast.py`
+## Ethics Manifesto v2.0
 
-The Quantum Meme Roaster.  
-A savage S23 bot that auto-trolls verified spam with quantum-random burns:
+The canonical document is [`docs/ETHICS.md`](docs/ETHICS.md).
 
-> “Your scam’s a sad Pepe in a 7-11 void.”
+The 2026 revision keeps the original seven principles while updating the old AI-era jokes and adding clearer positions on:
 
-TCPA-compliant, locked to Android’s BlockedNumberContract, and ready to entangle fraudsters.
+- inspectability, uncertainty, provenance, and reproducibility;
+- agent swarms, MCP-everything, benchmark theatre, and AI slop;
+- human review and evidence before confident claims;
+- privacy, consent, authorship, licences, and proportionate attribution;
+- verification appropriate to software, mathematics, research, security, visualisation, and sonification;
+- recognition of substantive contributors under **Addendum A — Official Consultant Recognition**.
 
+## Official Consultant Recognition
+
+Any contributor or author whose substantive ideas, models, code, documentation, research, designs, data, tests, visual or audio work, critique, or other contributions are accepted, incorporated, published, cited, or otherwise used by QSOL-IMC is recognised as an **Official Consultant of QSOL-IMC, ABN 37 585 906 952**, in relation to those contributions.
+
+The addendum also states the boundaries of that designation. By itself, it does not create employment, agency, partnership, automatic payment, an intellectual-property transfer, or authority to bind QSOL-IMC. Separate written agreements prevail where applicable.
+
+Read the complete wording before relying on the designation: [`docs/ETHICS.md`](docs/ETHICS.md#addendum-a--official-consultant-recognition).
+
+## DR. S.BAITSO 2026
+
+The obsolete `lambroast.py` experiment has been retired in favour of an original homage to early talking computer therapists.
+
+### Features
+
+- browser speech synthesis with selectable installed voices, **off by default**;
+- optional browser speech recognition where supported, with an explicit first-use privacy warning because some browsers use remote transcription services;
+- deterministic on-device text responses; typed text and generated replies are not transmitted by the app;
+- animated CRT/DOS-inspired talking face and waveform;
+- **Therapy**, **Agent Intervention**, **Benchmark Detox**, and **Doomscroll Triage** modes;
+- modern replies about coding agents, pull-request receipts, MCP servers, benchmark contamination, orchestration bloat, model consensus, and AI slop;
+- timed wellbeing interventions:
+  - 3 minutes: unclench jaw and shoulders;
+  - 7 minutes: hydration prompt;
+  - 12 minutes: **go touch grass**;
+  - 20 minutes: tree-level escalation;
+- commands including `/diagnose`, `/ethics`, `/consultant`, `/grass`, `/back`, `/mute`, and `/speak`;
+- installable/offline-capable static web app via `manifest.webmanifest`, maskable application icons, and `sw.js`;
+- accessible keyboard input, live transcript, programmatic mode selection, reduced-motion support, and responsive layout.
+
+DR. S.BAITSO 2026 is entertainment and satire, not medical or mental-health care.
+
+## Privacy boundary
+
+The deterministic reply engine, typed input, and transcript operate within the loaded page. The optional **MIC** control uses the browser's Web Speech recognition implementation. Depending on the browser and operating system, microphone audio may be sent to a third-party transcription service. The interface discloses this before first use and never labels microphone recognition as local.
+
+## Project structure
+
+```text
+.
+├── index.html
+├── styles.css
+├── app.js
+├── manifest.webmanifest
+├── sw.js
+├── icons/
+│   ├── icon-192.svg
+│   └── icon-512.svg
+└── docs/
+    └── ETHICS.md
 ```
 
-wow
-such scam
-very fail
-much roast
-/_/
-( o.o )
+## Development
 
-> ^ <
-
-````
-
-**Doge says:** Your IRS pitch decohered harder than a qubit in a microwave.
-
----
-
-## 📁 Repos & Tools
-
-- **LambRoaster** – Home of `lambroast.py`, quantum prankster extraordinaire.
-- **qiskit-qec-wrappers** – Core QEC stack for robust meme generation.
-- **proof-qec-dna-rubiks-audio-reactive-viz** – Audio visualization backbone.
-- **Coming Soon:** QSOL-IMC API for meme-secure VoIP (Twilio + laser entropy).
-
----
-
-## 🛠 Quick Start (S23/Termux Vibes)
-
-**Clone & Install**
-```sh
-git clone https://github.com/QSOLKCB/LambRoaster.git
-cd LambRoaster
-pip install -r requirements.txt  # qiskit, numpy, etc.
-````
-
-**Run the Roast**
-
-```sh
-python lambroast.py
-# Mock inbound: +1-555-LAMBSCAM
-# Enter scammer BS: "Your warranty expired!"
-# Output: Quantum burn + Doge ASCII. 🔥
-```
-
-**Test Spam Lock**
-Only verified numbers get the lamb treatment — manual callbacks, one-shot rule.
-
----
-
-### Dependencies (`requirements.txt`)
-
-* qiskit==0.46.0
-* qiskit-aer==0.15.0
-* numpy==1.26.4
-* *Whisper/Twilio optional for STT/VoIP*
-
----
-
-## 🧰 Python Virtual Environment Setup (Arch Linux)
-
-Arch protects its system Python, so use an isolated environment for installs.
-
-**Install Virtualenv**
+No build step exists.
 
 ```sh
-sudo pacman -S python-virtualenv
+python -m http.server 8000
 ```
 
-Expected prompt:
+Then open `http://localhost:8000`.
 
-```
-Packages (3) python-distlib ... python-platformdirs ... python-virtualenv ...
-:: Proceed with installation? [Y/n] Y
-```
+The app itself uses only standard HTML, CSS, JavaScript, browser Web Speech APIs when available, and a service worker. Voice quality and microphone support depend on the browser and operating system.
 
-Once installed, ConditionNeedsUpdate will arm automatically.
+## Contributing
 
-**Create a Virtual Environment**
+Substantive contributors should be credited accurately and proportionately. Open an issue or pull request with:
 
-```sh
-python -m venv venv
-```
+- what changed;
+- why it changed;
+- how it was checked;
+- any limitations or unverified assumptions;
+- the contributor name, handle, pseudonym, or attribution preference.
 
-**Activate It**
+Contact: [trent@qsol-imc.com](mailto:trent@qsol-imc.com)
 
-```sh
-source venv/bin/activate
-```
+## Licence and homage note
 
-You’ll see your prompt change to:
-
-```
-(venv) [trent@archlinux QEC]$
-```
-
-**Install Dependencies**
-
-```sh
-pip install -r requirements.txt
-```
-
-**Deactivate When Done**
-
-```sh
-deactivate
-```
-
-**Summary**
-
-```sh
-sudo pacman -S python-virtualenv
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-This workflow ensures full project isolation and avoids PEP 668: externally-managed-environment errors.
+The talking terminal is an original browser implementation inspired by the broad history of early speech-synthesis and ELIZA-style computer therapists. It does not include Creative Labs source code, original voice recordings, artwork, or other proprietary assets.
 
 ---
 
-## ⚖️ Legal & Ethics (Prick with Purpose)
-
-* **TCPA-Compliant:** Manual callbacks only, verified unsolicited spam via Android APIs + QSOLKCB hashes.
-* **Entertainment Only:** Roast responsibly. All burns are humor, not harassment.
-* **Privacy:** On-device inference only — no server data slurping.
-
-> **See full company ethics and guidelines:**
-> [docs/ETHICS.md](docs/ETHICS.md)
-> (QSOL-IMC: “Truth Compiled. Resonance Embodied. Coherence Renewed.”)
-
----
-
-## 🤝 Contribute
-
-* Fork and add your meme burns (e.g. “Pajit script? Yeeted to Wojak town!”).
-* Report bugs: “Quantum void detected — Doge viz unstable.”
-* Collab: Email [trent@qsol-imc.com](mailto:trent@qsol-imc.com)
-
----
-
-## 📈 Roadmap
-
-* **Q4 2025** – Full S23 app (Kivy build) + Snake Easter Egg 🐍
-* **2026** – Meme NFT marketplace for roast recordings
-* **Beyond** – Laser-kernel VoIP for global scammer entanglement
-
----
-
-**QSOL-IMC:** Much wow, such secure, very prank. 😎🔮🐶
-Powered by Trent Slade & the #fcukscammers collective.
-*Last updated: November 11, 2025*
-
-```
+Maintainer: Trent Slade / QSOL-IMC  
+Last updated: 3 August 2026
