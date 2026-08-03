@@ -44,9 +44,9 @@ The obsolete `lambroast.py` experiment has been retired in favour of an original
 
 ### Features
 
-- browser speech synthesis with selectable installed voices;
-- optional browser speech recognition where supported;
-- deterministic local responses with no conversation data transmitted;
+- browser speech synthesis with selectable installed voices, **off by default**;
+- optional browser speech recognition where supported, with an explicit first-use privacy warning because some browsers use remote transcription services;
+- deterministic on-device text responses; typed text and generated replies are not transmitted by the app;
 - animated CRT/DOS-inspired talking face and waveform;
 - **Therapy**, **Agent Intervention**, **Benchmark Detox**, and **Doomscroll Triage** modes;
 - modern replies about coding agents, pull-request receipts, MCP servers, benchmark contamination, orchestration bloat, model consensus, and AI slop;
@@ -56,10 +56,14 @@ The obsolete `lambroast.py` experiment has been retired in favour of an original
   - 12 minutes: **go touch grass**;
   - 20 minutes: tree-level escalation;
 - commands including `/diagnose`, `/ethics`, `/consultant`, `/grass`, `/back`, `/mute`, and `/speak`;
-- installable/offline-capable static web app via `manifest.webmanifest` and `sw.js`;
-- accessible keyboard input, live transcript, reduced-motion support, and responsive layout.
+- installable/offline-capable static web app via `manifest.webmanifest`, maskable application icons, and `sw.js`;
+- accessible keyboard input, live transcript, programmatic mode selection, reduced-motion support, and responsive layout.
 
 DR. S.BAITSO 2026 is entertainment and satire, not medical or mental-health care.
+
+## Privacy boundary
+
+The deterministic reply engine, typed input, and transcript operate within the loaded page. The optional **MIC** control uses the browser's Web Speech recognition implementation. Depending on the browser and operating system, microphone audio may be sent to a third-party transcription service. The interface discloses this before first use and never labels microphone recognition as local.
 
 ## Project structure
 
@@ -70,6 +74,9 @@ DR. S.BAITSO 2026 is entertainment and satire, not medical or mental-health care
 ├── app.js
 ├── manifest.webmanifest
 ├── sw.js
+├── icons/
+│   ├── icon-192.svg
+│   └── icon-512.svg
 └── docs/
     └── ETHICS.md
 ```
@@ -84,7 +91,7 @@ python -m http.server 8000
 
 Then open `http://localhost:8000`.
 
-The app itself uses only standard HTML, CSS, JavaScript, Web Speech APIs when available, and a service worker. Voice quality and microphone support depend on the browser and operating system.
+The app itself uses only standard HTML, CSS, JavaScript, browser Web Speech APIs when available, and a service worker. Voice quality and microphone support depend on the browser and operating system.
 
 ## Contributing
 
