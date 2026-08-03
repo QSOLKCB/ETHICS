@@ -1,0 +1,12 @@
+{
+  "name": "DR. S.BAITSO 2026 — QSOL-IMC Ethics Terminal",
+  "short_name": "S.BAITSO 2026",
+  "description": "A browser-native talking meme therapist and ethics terminal from QSOL-IMC.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#020604",
+  "theme_color": "#07100d",
+  "lang": "en-AU",
+  "categories": ["entertainment", "education", "utilities"]
+}
