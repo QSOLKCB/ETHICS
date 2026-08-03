@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#07100d">
   <title>DR. S.BAITSO 2026 — QSOL-IMC Ethics Terminal</title>
   <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
       </div>
       <div class="status-panel" aria-label="System status">
         <span class="status-light" aria-hidden="true"></span>
-        <span id="system-status">LOCAL // READY</span>
+        <span id="system-status">TEXT // READY</span>
       </div>
     </header>
 
@@ -34,9 +35,9 @@
         <div class="faceplate">
           <div class="eye eye-left"></div>
           <div class="eye eye-right"></div>
-          <div id="mouth" class="mouth"></div>
+          <div class="mouth"></div>
         </div>
-        <div id="waveform" class="waveform">
+        <div class="waveform">
           <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
       </div>
@@ -45,25 +46,26 @@
         <div class="terminal-bar">
           <span>SESSION: <strong id="session-id">000000</strong></span>
           <span>MODE: <strong id="mode-label">MEMETIC THERAPY</strong></span>
-          <span>PRIVACY: <strong>LOCAL ONLY</strong></span>
+          <span>TEXT ENGINE: <strong>ON-DEVICE</strong></span>
         </div>
 
         <div id="transcript" class="transcript" role="log" aria-live="polite" aria-relevant="additions text" tabindex="0"></div>
 
         <form id="terminal-form" class="input-row" autocomplete="off">
           <label for="prompt" class="prompt-mark">PATIENT&gt;</label>
-          <input id="prompt" name="prompt" type="text" maxlength="500" spellcheck="true" placeholder="Describe your semantic malfunction…" aria-describedby="input-help">
+          <input id="prompt" name="prompt" type="text" maxlength="500" spellcheck="true" placeholder="Describe your semantic malfunction…" aria-describedby="input-help mic-privacy">
           <button id="send-button" type="submit">TRANSMIT</button>
-          <button id="mic-button" class="icon-button" type="button" aria-pressed="false" title="Use microphone">MIC</button>
+          <button id="mic-button" class="icon-button" type="button" aria-pressed="false" title="Browser speech recognition may use a remote transcription service">MIC</button>
         </form>
-        <p id="input-help" class="input-help">Try <code>/help</code>, <code>/diagnose</code>, <code>/ethics</code>, <code>/consultant</code>, <code>/grass</code>, or simply confess what the coding agent did.</p>
+        <p id="input-help" class="input-help">Try <code>/help</code>, <code>/diagnose</code>, <code>/ethics</code>, <code>/consultant</code>, <code>/grass</code>, or confess what the coding agent did.</p>
+        <p id="mic-privacy" class="privacy-note"><strong>Microphone privacy:</strong> speech recognition is supplied by your browser and may transmit audio to a remote service. A warning appears before first use. Typed text and generated replies stay within this page.</p>
       </div>
     </section>
 
     <section class="controls" aria-label="Voice and session controls">
       <label>
         Voice
-        <select id="voice-select"></select>
+        <select id="voice-select" aria-label="Browser speech voice"></select>
       </label>
       <label>
         Rate
@@ -73,25 +75,25 @@
         Pitch
         <input id="pitch" type="range" min="0.55" max="1.45" step="0.05" value="0.78">
       </label>
-      <button id="speech-toggle" type="button" aria-pressed="true">VOICE: ON</button>
+      <button id="speech-toggle" type="button" aria-pressed="false">VOICE: OFF</button>
       <button id="interrupt-button" type="button">INTERRUPT</button>
       <button id="clear-button" type="button">CLEAR</button>
     </section>
 
     <section class="mode-grid" aria-label="Therapy modes">
-      <button class="mode-card active" data-mode="therapy">
+      <button type="button" class="mode-card active" data-mode="therapy" aria-pressed="true">
         <strong>THERAPY</strong>
         <span>Classic reflective nonsense</span>
       </button>
-      <button class="mode-card" data-mode="agent">
+      <button type="button" class="mode-card" data-mode="agent" aria-pressed="false">
         <strong>AGENT INTERVENTION</strong>
         <span>For autonomous PR incidents</span>
       </button>
-      <button class="mode-card" data-mode="benchmark">
+      <button type="button" class="mode-card" data-mode="benchmark" aria-pressed="false">
         <strong>BENCHMARK DETOX</strong>
         <span>Recover from chart exposure</span>
       </button>
-      <button class="mode-card" data-mode="doomscroll">
+      <button type="button" class="mode-card" data-mode="doomscroll" aria-pressed="false">
         <strong>DOOMSCROLL TRIAGE</strong>
         <span>Emergency grass protocol</span>
       </button>
@@ -99,6 +101,7 @@
 
     <footer>
       <p>An original browser homage to early talking computer therapists. No Creative Labs code, audio, branding, or assets are included.</p>
+      <p>Entertainment and satire only — not medical or mental-health care.</p>
       <p><a href="docs/ETHICS.md">Read the QSOL-IMC Ethics Manifesto</a> · <a href="https://github.com/QSOLKCB/ETHICS">Source</a></p>
     </footer>
   </main>
